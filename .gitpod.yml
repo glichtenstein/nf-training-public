@@ -29,8 +29,9 @@ tasks:
         asciidoctorj -D ../serve index.adoc
         cp -r img ../serve
         cd ../serve
+    command: |   
+        python -m http.server 8000    
         
-      
   - name: Download Nextflow Tutorial
     init: |
       echo 'init script' # runs during prebuild
@@ -48,7 +49,7 @@ tasks:
       unset JAVA_TOOL_OPTIONS
       alias conda_activate=". /opt/conda/etc/profile.d/conda.sh; conda activate bash"
       eval "$(sudo /opt/conda/bin/python -m conda init --dev bash)"
-      python -m http.server 8000     
+       
 
       
 
