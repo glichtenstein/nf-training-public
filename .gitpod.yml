@@ -49,7 +49,7 @@ tasks:
       unset JAVA_TOOL_OPTIONS
       alias conda_activate=". /opt/conda/etc/profile.d/conda.sh; conda activate bash"
       eval "$(sudo /opt/conda/bin/python -m conda init --dev bash)"
-       
+      bash -i init.conda.sh
 
       
 
