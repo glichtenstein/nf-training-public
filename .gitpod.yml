@@ -20,9 +20,9 @@ tasks:
   - name: Prepare nf-training
     before: |
       gp await-port 23000 && gp preview https://training.seqera.io && cd /workspace/nf-training-public/nf-training
-      alias conda_activate=". /opt/conda/etc/profile.d/conda.sh; conda activate base"
-      unset JAVA_TOOL_OPTIONS
-      export CAPSULE_LOG=none
-      clear
+      gp alias conda_activate=". /opt/conda/etc/profile.d/conda.sh; conda activate base"
+      gp unset JAVA_TOOL_OPTIONS
+      gp export CAPSULE_LOG=none
+      gp clear
     init: |
       docker pull nextflow/rnaseq-nf
