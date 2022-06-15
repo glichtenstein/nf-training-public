@@ -34,11 +34,10 @@ RUN chmod +x nextflow
 
 RUN sudo mv nextflow /usr/local/bin/
 
+RUN unset JAVA_TOOL_OPTIONS
+
 # unset JAVA_TOOL_OPTIONS
 # cd nf-training
-# curl -s https://get.nextflow.io | bash
-# chmod +x nextflow
-# sudo mv nextflow /usr/local/bin/
 # docker pull nextflow/rnaseq-nf
 # alias conda_activate=". /opt/conda/etc/profile.d/conda.sh; conda activate base"
 
