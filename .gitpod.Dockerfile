@@ -10,6 +10,7 @@ RUN apt-get update \
   less \
   wget \
   tree \
+  curl \
   graphviz
 
 RUN mkdir -p /workspace/data \
@@ -26,6 +27,8 @@ RUN chown -R gitpod:gitpod /opt/conda \
     && chmod -R 777 /opt/conda \
     && chown -R gitpod:gitpod /home/gitpod/.conda \
     && chmod -R 777 /home/gitpod/.conda
+
+RUN curl -s https://get.nextflow.io | bash
 
 # unset JAVA_TOOL_OPTIONS
 # cd nf-training
