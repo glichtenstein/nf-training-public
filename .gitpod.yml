@@ -23,11 +23,11 @@ tasks:
   - name: Download Nextflow Tutorial
     init: |
       echo 'init script' # runs during prebuild
-      
-    command: |
       curl -s https://get.nextflow.io | bash
       chmod +x nextflow
       sudo mv nextflow /usr/local/bin/
+      
+    command: |
       docker pull nextflow/rnaseq-nf
       unset JAVA_TOOL_OPTIONS
       alias conda_activate=". /opt/conda/etc/profile.d/conda.sh; conda activate base"
