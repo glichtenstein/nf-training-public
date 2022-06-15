@@ -34,14 +34,7 @@ RUN chmod +x nextflow
 
 RUN sudo mv nextflow /usr/local/bin/
 
-RUN unset JAVA_TOOL_OPTIONS
-
 RUN export CAPSULE_LOG=none
-
-# unset JAVA_TOOL_OPTIONS
-# cd nf-training
-# docker pull nextflow/rnaseq-nf
-# alias conda_activate=". /opt/conda/etc/profile.d/conda.sh; conda activate base"
 
 # Give back control
 USER root
