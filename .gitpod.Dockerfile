@@ -36,6 +36,8 @@ RUN sudo mv nextflow /usr/local/bin/
 
 RUN unset JAVA_TOOL_OPTIONS
 
+RUN export CAPSULE_LOG=none
+
 # unset JAVA_TOOL_OPTIONS
 # cd nf-training
 # docker pull nextflow/rnaseq-nf
