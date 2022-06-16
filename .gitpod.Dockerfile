@@ -31,7 +31,7 @@ RUN curl -s https://get.nextflow.io -o nextflow
 
 RUN chmod +x nextflow
 
-RUN sudo mv nextflow /usr/local/bin/ && nextflow info
+RUN sudo mv nextflow /usr/local/bin/
 
 USER root
 
