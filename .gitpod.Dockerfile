@@ -29,9 +29,6 @@ RUN chown -R gitpod:gitpod /opt/conda \
     && chmod -R 777 /home/gitpod/.conda
 
 FROM amazoncorretto:17.0.3
-RUN yum install -y procps-ng
-
-FROM amazoncorretto:17.0.3
 COPY --from=0 /bin/ps /bin/ps
 ENV NXF_HOME=/.nextflow
 ARG TARGETPLATFORM
