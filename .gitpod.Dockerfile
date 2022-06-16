@@ -11,7 +11,6 @@ RUN apt-get update \
   wget \
   tree \
   curl \
-  yum \
   graphviz
 
 RUN mkdir -p /workspace/data \
@@ -29,6 +28,7 @@ RUN chown -R gitpod:gitpod /opt/conda \
     && chown -R gitpod:gitpod /home/gitpod/.conda \
     && chmod -R 777 /home/gitpod/.conda
 
+FROM amazoncorretto:17.0.3
 RUN yum install -y procps-ng
 
 FROM amazoncorretto:17.0.3
