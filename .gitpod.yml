@@ -27,5 +27,4 @@ tasks:
     command: |
       docker pull nextflow/rnaseq-nf
       unset JAVA_TOOL_OPTIONS
-      alias conda_activate=". /opt/conda/etc/profile.d/conda.sh; conda activate base"
       cd nf-training
