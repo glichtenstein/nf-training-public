@@ -18,10 +18,10 @@ image: nfcore/gitpod:latest
 # List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
 tasks:
   - name: Start web server
-    command: |
+    before:
       gp await-port 23000 && gp preview https://training.seqera.io
       cd nf-training
-      conda init bash
       unset JAVA_TOOL_OPTIONS
       clear
+    command: |
       docker pull nextflow/rnaseq-nf
