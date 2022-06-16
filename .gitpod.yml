@@ -20,7 +20,7 @@ tasks:
   - name: Prepare Nextflow Tutorial
     init: |
       gp ports await 23000 && gp preview https://training.seqera.io
-      unset JAVA_TOOL_OPTIONS
+      gp unset JAVA_TOOL_OPTIONS
       clear
     command: |
       docker pull nextflow/rnaseq-nf
