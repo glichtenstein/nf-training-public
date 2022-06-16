@@ -11,11 +11,12 @@ RUN apt-get update \
   tree \
   curl \
   graphviz
+
 RUN mkdir -p /workspace/data \
     && chown -R gitpod:gitpod /workspace/data
   
 RUN mkdir /home/gitpod/.conda
-# Install conda
+
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && \
     /bin/bash ~/miniconda.sh -b -p /opt/conda && \
     rm ~/miniconda.sh && \
@@ -30,14 +31,8 @@ RUN curl -s https://get.nextflow.io -o nextflow
 
 RUN chmod +x nextflow
 
-RUN sudo mv nextflow /usr/local/bin/
+RUN sudo mv nextflow /usr/local/bin/ && nextflow info
 
-RUN export CAPSULE_LOG=none
-
-RUN nextflow info
-
-# Give back control
 USER root
 
-# Cleaning
 RUN apt-get clean
