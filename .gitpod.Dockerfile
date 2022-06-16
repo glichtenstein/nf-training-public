@@ -1,5 +1,4 @@
 FROM gitpod/workspace-full:latest
-
 USER root
 # Install util tools.
 RUN apt-get update \
@@ -12,7 +11,6 @@ RUN apt-get update \
   tree \
   curl \
   graphviz
-
 RUN mkdir -p /workspace/data \
     && chown -R gitpod:gitpod /workspace/data
   
@@ -28,25 +26,15 @@ RUN chown -R gitpod:gitpod /opt/conda \
     && chown -R gitpod:gitpod /home/gitpod/.conda \
     && chmod -R 777 /home/gitpod/.conda
 
-FROM amazoncorretto:17.0.3
-COPY --from=0 /bin/ps /bin/ps
-ENV NXF_HOME=/.nextflow
-ARG TARGETPLATFORM
+RUN curl -s https://get.nextflow.io -o nextflow
 
-# copy docker client
-COPY dist/${TARGETPLATFORM}/docker /usr/local/bin/docker
-COPY entry.sh /usr/local/bin/entry.sh
-COPY nextflow /usr/local/bin/nextflow
+RUN chmod +x nextflow
 
-# download runtime
-RUN mkdir /.nextflow \
- && touch /.nextflow/dockerized \
- && chmod 755 /usr/local/bin/nextflow \
- && chmod 755 /usr/local/bin/entry.sh \
- && nextflow info
+RUN sudo mv nextflow /usr/local/bin/
 
-# define the entry point
-ENTRYPOINT ["/usr/local/bin/entry.sh"]
+RUN export CAPSULE_LOG=none
+
+RUN nextflow info
 
 # Give back control
 USER root
