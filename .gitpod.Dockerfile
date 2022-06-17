@@ -27,7 +27,7 @@ RUN chown -R gitpod:gitpod /opt/conda \
     && chown -R gitpod:gitpod /home/gitpod/.conda \
     && chmod -R 777 /home/gitpod/.conda
 
-RUN apt-get install -y curl -s https://get.nextflow.io -o nextflow && chmod +x nextflow
+RUN /bin/sh -c curl -fsSL https://get.nextflow.io | bash  && mv nextflow /usr/local/bin/  && chmod 755 /usr/local/bin/nextflow  && nextflow info  && rm /.nextflow/maven.xml
 
 USER root
 
