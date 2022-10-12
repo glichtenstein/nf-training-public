@@ -33,6 +33,8 @@ process INDEX {
 }
 
 process QUANTIFICATION {
+    cpus 8
+    
     input:
     path salmon_index
     tuple val(sample_id), path(reads)
