@@ -17,3 +17,12 @@ log.info """\
 
 read_pairs_ch = Channel.fromFilePairs(params.reads, checkIfExists:true)
 read_pairs_ch.view()
+
+/*  
+* Use set operator to build a channel 
+*/
+Channel
+  .fromFilePairs( params.reads )
+  .set { read_pairs_ch }
+  
+read_pairs_ch.view()
