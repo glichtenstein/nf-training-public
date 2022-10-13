@@ -20,6 +20,8 @@ log.info """\
  * given the transcriptome file
  */
 process INDEX {
+    cpus 8
+    
     input:
     path transcriptome
 

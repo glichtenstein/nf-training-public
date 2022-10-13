@@ -1,10 +1,10 @@
 /*
  * pipeline input parameters
  */
-params.reads = "$projectDir/data/ggal/gut_{1,2}.fq"
+params.reads = "$projectDir/data/ggal/*_{1,2}.fq"
 params.transcriptome_file = "$projectDir/data/ggal/transcriptome.fa"
 params.multiqc = "$projectDir/multiqc"
-params.outdir = "results"
+params.outdir = "my_results"
 
 log.info """\
     R N A S E Q - N F   P I P E L I N E
@@ -20,6 +20,7 @@ log.info """\
  * given the transcriptome file
  */
 process INDEX {
+    cpus 12
     input:
     path transcriptome
 
@@ -33,6 +34,7 @@ process INDEX {
 }
 
 process QUANTIFICATION {
+    cpus 12
     tag "Salmon on $sample_id"
     publishDir params.outdir, mode:'copy'
 
@@ -51,6 +53,8 @@ process QUANTIFICATION {
 
 process FASTQC {
     tag "FASTQC on $sample_id"
+    publishDir params.outdir, mode:'copy'
+
 
     input:
     tuple val(sample_id), path(reads)
